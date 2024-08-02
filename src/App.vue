@@ -1,15 +1,18 @@
 <template>
   <div class="portfolio__container container">
     <HeaderVue />
+    <HeroVueVue />
   </div>
 </template>
 
 <script>
 import HeaderVue from './components/HeaderVue.vue';
+import HeroVueVue from './components/HeroVue.vue';
 export default {
   name: "App",
   components: {
     HeaderVue,
+    HeroVueVue
   },
 };
 </script>
@@ -66,7 +69,7 @@ canvas {
   --height--main--btn: Fixed (41px) px;
   --padding--main--btn: 10px 0px 0px 0px;
   --gap--main--btn: 10px;
-  --border-radius--main--btn: 75px 0px 0px 0px;
+  --border-radius--main--btn: 75px;
   --border--main--btn: 1px 0px 0px 0px;
   --opacity--main--btn: 0px;
 
