@@ -1,17 +1,18 @@
 <template>
   <div class="header--container">
     <div class="logo logo--container">
-      <img src="../assets/othmane_aoubid.png" alt="Othmane Aoubid">
+      <img src="../assets/othmane_aoubid.png" alt="Othmane Aoubid" />
     </div>
     <div class="hamburger--menu" @click="toggleMenu">
-      <div :class="{'line': true, 'line1': true, 'active': isActive}"></div>
-      <div :class="{'line': true, 'line2': true, 'active': isActive}"></div>
-      <div :class="{'line': true, 'line3': true, 'active': isActive}"></div>
+      <div :class="{ line: true, line1: true, active: isActive }"></div>
+      <div :class="{ line: true, line2: true, active: isActive }"></div>
+      <div :class="{ line: true, line3: true, active: isActive }"></div>
     </div>
-    <div :class="{'menu menu--container': true, 'active': isActive}">
+    
+    <div :class="{ 'menu menu--container': true, active: isActive }">
       <ul>
-        <li><a href="#home" class="about" >About me</a></li>
-        <li class="contact" ><a href="#about">Contact</a></li>
+        <li><a href="#home" class="about">About me</a></li>
+        <li class="contact"><a href="#about">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -21,15 +22,15 @@
 export default {
   data() {
     return {
-      isActive: false
+      isActive: false,
     };
   },
   methods: {
     toggleMenu() {
       this.isActive = !this.isActive;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -135,12 +136,12 @@ export default {
   text-decoration: none;
   font-size: 1.2rem;
 }
-.about{
-  color:var(--main--text--color) !important;
+.about {
+  color: var(--main--text--color) !important;
   border-radius: 8.8px;
   border: 0.88px solid;
-  border: linear-gradient(90deg, #32CD32 0%, #FFFFFF 100%);
-  padding: .5rem 1rem;
+  border: linear-gradient(90deg, #32cd32 0%, #ffffff 100%);
+  padding: 0.5rem 1rem;
 }
 /* Media query for small screens */
 @media (max-width: 600px) {
