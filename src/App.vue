@@ -2,7 +2,7 @@
   <div class="portfolio__container container">
     <HeaderVue />
     <HeroVueVue />
-    <div>
+    <div style="text-align: center;">
       more content would be added here...
     </div>
   </div>
@@ -30,6 +30,7 @@ export default {
 
 body {
   margin: unset;
+  overflow: hidden;
 }
 a{
   text-decoration: none;
