@@ -2,6 +2,9 @@
   <div class="portfolio__container container">
     <HeaderVue />
     <HeroVueVue />
+    <div>
+      more content would be added here...
+    </div>
   </div>
 </template>
 
