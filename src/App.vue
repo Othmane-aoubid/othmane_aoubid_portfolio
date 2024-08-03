@@ -4,6 +4,7 @@
     <HeroVueVue />
     <WhatIdDoVue />
     <MyProjects />
+    <GetInTouchVue />
     <div style="text-align: center;">
       more content would be added here...
     </div>
@@ -14,14 +15,16 @@
 import HeaderVue from './components/HeaderVue.vue';
 import HeroVueVue from './components/HeroVue.vue';
 import WhatIdDoVue from './components/WhatIdDo.vue';
-import MyProjects from './components/MyProjects.vue';
+import MyProjects from './components/MyProjects.vue'; 
+import GetInTouchVue from './components/GetInTouch.vue';
 export default {
   name: "App",
   components: {
     HeaderVue,
     HeroVueVue,
     WhatIdDoVue,
-    MyProjects
+    MyProjects,
+    GetInTouchVue
   },
 };
 </script>
