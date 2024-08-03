@@ -87,5 +87,9 @@ export default {};
     width: 40%;
     margin-inline: auto;
   }
+  .hero--section--btn--container{
+    display: flex;
+    flex-direction: row;
+  }
 }
 </style>
