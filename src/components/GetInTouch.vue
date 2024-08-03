@@ -1,7 +1,7 @@
 <template>
   <div class="get--in-touch--form--container">
     <h3>Get In Touch <span class="glowing--effect">Lets work together</span></h3>
-    <form @submit.prevent="validateForm">
+    <form class="form" @submit.prevent="validateForm">
       <div class="input-group">
         <input type="text" v-model="form.lastName" placeholder="Last Name" />
         <input type="text" v-model="form.firstName" placeholder="First Name" />
@@ -108,6 +108,7 @@ export default {
   display: flex;
   flex-direction: column;
   background-color: #222;
+  padding: 1rem;
 }
 
 .input-group {
@@ -149,5 +150,12 @@ button:hover {
 .errorMessage {
   color: red;
   text-align: center;
+}
+
+@media (min-width: 1280px){
+  .form{
+    width: 80%;
+    margin-inline: auto;
+  }
 }
 </style>

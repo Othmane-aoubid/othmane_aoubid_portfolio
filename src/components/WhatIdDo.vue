@@ -121,4 +121,14 @@ export default {
   width: 243px;
   height: 121px;
 }
+
+/* Media query for 1280px and larger screens */
+@media (min-width: 1280px){
+  .card--container {
+    flex-direction: row;
+  }
+  .card {
+    height: 300px;
+  }
+}
 </style>

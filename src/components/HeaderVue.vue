@@ -158,4 +158,39 @@ export default {
     display: block;
   }
 }
+/* Media query for 1280px and larger screens */
+@media (min-width: 1280px) {
+  .hamburger--menu {
+    display: none; /* Hide hamburger menu on large screens */
+  }
+  .logo{
+    width: 100px !important;
+    height: 50px;
+    padding: 0 !important;
+  }
+  .logo img {
+    max-width: 100%; /* Ensure the image doesn't exceed the container's width */
+    max-height: 100%; /* Ensure the image doesn't exceed the container's height */
+    width: 100%; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the entire image is visible */
+    object-position: center; /* Center the image within the container */
+  }
+  .menu {
+    display: flex; /* Always display menu on large screens */
+    position: static; /* Remove absolute positioning */
+    width: auto; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    top: auto; /* Remove top positioning */
+    right: auto; /* Remove right positioning */
+    background-color: transparent; /* Adjust background color */
+    flex-direction: row; /* Arrange items horizontally */
+  }
+  .menu--container ul {
+    flex-direction: row; /* Arrange menu items horizontally */
+  }
+  .menu--container li {
+    margin: 0 1rem; /* Adjust margin for horizontal layout */
+  }
+}
 </style>

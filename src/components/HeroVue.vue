@@ -81,4 +81,11 @@ export default {};
   background-color: #32cd32;
   color: #000000 ;
 }
+/* Media query for 1280px and larger screens */
+@media (min-width: 1280px){
+  .hero--section--paragraph{
+    width: 40%;
+    margin-inline: auto;
+  }
+}
 </style>

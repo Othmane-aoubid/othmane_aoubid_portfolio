@@ -200,4 +200,14 @@ export default {
   font-weight: 400;
   line-height: 16.41px;
 }
+
+@media (min-width: 1280px){
+  .projects{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
 </style>
