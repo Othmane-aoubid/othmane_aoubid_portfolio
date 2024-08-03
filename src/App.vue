@@ -3,6 +3,7 @@
     <HeaderVue />
     <HeroVueVue />
     <WhatIdDoVue />
+    <MyProjects />
     <div style="text-align: center;">
       more content would be added here...
     </div>
@@ -13,12 +14,14 @@
 import HeaderVue from './components/HeaderVue.vue';
 import HeroVueVue from './components/HeroVue.vue';
 import WhatIdDoVue from './components/WhatIdDo.vue';
+import MyProjects from './components/MyProjects.vue';
 export default {
   name: "App",
   components: {
     HeaderVue,
     HeroVueVue,
-    WhatIdDoVue
+    WhatIdDoVue,
+    MyProjects
   },
 };
 </script>
