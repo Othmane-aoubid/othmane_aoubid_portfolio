@@ -8,7 +8,7 @@
       <a href="#" class="icon instagram"><i class="fab fa-instagram"></i></a>
       <a href="#" class="icon twitter"><i class="fab fa-twitter"></i></a>
     </div>
-    <div class="copyright">© 2023 all rights reserved.</div>
+    <div class="copyright">© 2024 all rights reserved.</div>
   </div>
 </template>
 
