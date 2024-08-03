@@ -104,10 +104,14 @@ export default {
   justify-content: center;
   padding: 1rem;
   box-sizing: border-box;
+  display: none;
+  transition: all 0.3s ease;
 }
 
 .menu.active {
   right: 0;
+  display: inline-block;
+  z-index: 9999 !important;
 }
 
 .close-btn {

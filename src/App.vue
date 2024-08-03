@@ -33,11 +33,48 @@ export default {
   box-sizing: border-box;
   color: white;
 }
+/* For Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px !important; /* Set the width of the vertical scrollbar */
+  height: 0 !important; /* Hide the horizontal scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1f1f1 !important; /* Background of the scrollbar track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #32CD32 !important; /* Color of the scrollbar thumb */
+  border-radius: 10px !important; /* Rounded corners for the scrollbar thumb */
+  border: 3px solid #f1f1f1 !important; /* Optional: Adds space around the thumb */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin !important; /* Sets the width of the vertical scrollbar */
+  scrollbar-color: #32CD32 #f1f1f1 !important; /* Color of the scrollbar thumb and track */
+}
 
 body {
   margin: unset;
-  overflow: hidden;
+  overflow-x: hidden !important;
+  overflow-y:scroll;
 }
+/* For Chrome, Edge, and Safari */
+body::-webkit-scrollbar {
+  width: 10px !important; /* Set the width of the scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1 !important; /* Background of the scrollbar track */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #32CD32 !important; /* Color of the scrollbar thumb */
+  border-radius: 10px !important; /* Rounded corners for the scrollbar thumb */
+  border: 3px solid #f1f1f1 !important; /* Optional: Adds space around the thumb */
+}
+
 a{
   text-decoration: none;
 }
