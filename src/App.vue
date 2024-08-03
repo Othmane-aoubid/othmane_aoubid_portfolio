@@ -5,9 +5,7 @@
     <WhatIdDoVue />
     <MyProjects />
     <GetInTouchVue />
-    <div style="text-align: center;">
-      more content would be added here...
-    </div>
+    <FooterView />
   </div>
 </template>
 
@@ -17,6 +15,7 @@ import HeroVueVue from './components/HeroVue.vue';
 import WhatIdDoVue from './components/WhatIdDo.vue';
 import MyProjects from './components/MyProjects.vue'; 
 import GetInTouchVue from './components/GetInTouch.vue';
+import FooterView from './components/FooterView.vue';
 export default {
   name: "App",
   components: {
@@ -24,7 +23,8 @@ export default {
     HeroVueVue,
     WhatIdDoVue,
     MyProjects,
-    GetInTouchVue
+    GetInTouchVue,
+    FooterView
   },
 };
 </script>
