@@ -16,14 +16,39 @@
       </p>
       <div class="hero--section--btn--container">
         <button class="contact--me">Contact Me</button>
-        <button class="download--resume">Download Resume</button>
+        <button class="download--resume" @click="downloadResume">Download Resume</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import axios from 'axios';
+import { storage, ref, getDownloadURL } from '../firebase/index.js';
+export default {
+  methods: {
+    async downloadResume() {
+      try {
+        const resumeRef = ref(storage, '/resume1/othmaneaoubid-cv.pdf'); // Path to your resume file
+        const url = await getDownloadURL(resumeRef);
+
+        // Fetch the file using Axios
+        const response = await axios.get(url, { responseType: 'blob' });
+        const fileURL = window.URL.createObjectURL(new Blob([response.data]));
+        const fileLink = document.createElement('a');
+
+        fileLink.href = fileURL;
+        fileLink.setAttribute('download', 'OthmaneAoubid.pdf'); // Set the file name
+        document.body.appendChild(fileLink);
+
+        fileLink.click();
+        document.body.removeChild(fileLink);
+      } catch (error) {
+        console.error('Error downloading the resume:', error);
+      }
+    },
+  }
+};
 </script>
 
 <style scoped>
