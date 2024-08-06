@@ -15,7 +15,7 @@
         landscapes and uncovering meaningful patterns that drive innovation
       </p>
       <div class="hero--section--btn--container">
-        <button class="contact--me">Contact Me</button>
+        <button class="contact--me" @click.prevent="scrollToSection('contact')">Contact Me</button>
         <button class="download--resume" @click="downloadResume">Download Resume</button>
       </div>
     </div>
@@ -45,6 +45,14 @@ export default {
         document.body.removeChild(fileLink);
       } catch (error) {
         console.error('Error downloading the resume:', error);
+      }
+    },
+    scrollToSection(section) {
+      this.isActive = false;
+      this.activeSection = section;
+      const el = document.getElementById(section);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
       }
     },
   }
