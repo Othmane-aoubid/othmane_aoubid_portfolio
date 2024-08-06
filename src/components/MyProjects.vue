@@ -37,7 +37,7 @@
               <p class="card--description">{{ card.description }}</p>
               <p class="card--tech">{{ card.technology }}</p>
             </div>
-            <div class="card--icon">
+            <div class="card--icon" @click="openProject(card.link)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -75,11 +75,13 @@ export default {
       type: Array,
       default: () => [
         {
-          image: require("../assets/cardsIcon.png"),
-          alt: "lightbulb",
-          title: "Data Analytics & Visualization",
-          description: "From data inception to actionable insights...",
-          technology: "Python, SQL, Tableau",
+          image: require("../assets/predective2.png"),
+          alt: "predictive",
+          title: "About Predictive",
+          description:
+            "Predictive is a security and vulnerability scanning platform that identifies and predicts security threats before they happen.",
+          technology: "Python, Firebase, Vuex, Vuejs, Firebase Cloud Function, Apexcharts",
+          link: "https://predictive.tisalabs.com/",
         },
         {
           image: require("../assets/cardsIcon.png"),
@@ -113,6 +115,9 @@ export default {
     },
   },
   methods: {
+    openProject(url) {
+      window.open(url, "_blank");
+    },
     prev() {
       this.currentIndex = this.prevIndex;
     },
@@ -128,10 +133,10 @@ export default {
     },
   },
   mounted() {
-    this.startCarousel();
+    // this.startCarousel();
   },
   unmounted() {
-    this.stopCarousel();
+    // this.stopCarousel();
   },
 };
 </script>
@@ -182,11 +187,11 @@ export default {
 .card--image {
   width: 100%;
   height: 150px;
-  background-color: #d9d9d9;
   border-radius: 8px;
-  margin-bottom: 16px;
+  object-fit: cover; /* Maintain aspect ratio while covering the entire container */
+  object-position: center; /* Center the image within the container */
 }
-.card--image img{
+.card--image img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Maintain aspect ratio while covering the entire container */
@@ -194,9 +199,11 @@ export default {
 }
 .card--content {
   flex-grow: 1;
+  padding-inline: 0.5rem;
 }
 
-.card--title, .card--description {
+.card--title,
+.card--description {
   font-family: Roboto;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -205,13 +212,16 @@ export default {
 }
 
 .card--title {
-  font-size: 1.2rem; /* Adjust font size */
+  font-size: 1.1rem; /* Adjust font size */
   font-weight: 700; /* Increase font weight for better readability */
+  margin: 0;
 }
 
 .card--description {
-  font-size: 1rem; /* Adjust font size */
+  font-size: 0.8em; /* Adjust font size */
   font-weight: 400; /* Maintain regular font weight */
+  height: 63px;
+  overflow-y: scroll;
 }
 
 .card--tech {
@@ -222,8 +232,8 @@ export default {
 
 .card--icon {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 8px;
+  right: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -272,6 +282,7 @@ export default {
   width: 300px;
   transition: transform 0.5s ease, opacity 0.5s ease;
   opacity: 0;
+  border: 1px solid #2b2b2b;
 }
 .carousel-item.active {
   opacity: 1;
