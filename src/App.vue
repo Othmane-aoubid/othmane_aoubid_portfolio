@@ -136,6 +136,7 @@ canvas {
   font-size: 14px;
   font-weight: 500;
   line-height: 30px;
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
