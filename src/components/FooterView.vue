@@ -1,5 +1,5 @@
 <template>
-  <div class="footer--container">
+  <div id="contact" class="footer--container">
     <div class="line"></div>
     <div class="social-icons">
       <a href="#" class="icon linkedin"><i class="fab fa-linkedin"></i></a>

@@ -8,11 +8,26 @@
       <div :class="{ line: true, line2: true, active: isActive }"></div>
       <div :class="{ line: true, line3: true, active: isActive }"></div>
     </div>
-    
+
     <div :class="{ 'menu menu--container': true, active: isActive }">
       <ul>
-        <li><a href="#home" class="about">About me</a></li>
-        <li class="contact"><a href="#about">Contact</a></li>
+        <li>
+          <a
+            href="#about"
+            class="about"
+            :class="{ active: activeSection === 'about' }"
+            @click.prevent="scrollToSection('about')"
+            >About me</a
+          >
+        </li>
+        <li class="contact">
+          <a
+            href="#contact"
+            :class="{ active: activeSection === 'contact' }"
+            @click.prevent="scrollToSection('contact')"
+            >Contact</a
+          >
+        </li>
       </ul>
     </div>
   </div>
@@ -23,11 +38,20 @@ export default {
   data() {
     return {
       isActive: false,
+      activeSection: "about", // Set About me as active by default
     };
   },
   methods: {
     toggleMenu() {
       this.isActive = !this.isActive;
+    },
+    scrollToSection(section) {
+      this.isActive = false;
+      this.activeSection = section;
+      const el = document.getElementById(section);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     },
   },
 };
@@ -140,13 +164,15 @@ export default {
   text-decoration: none;
   font-size: 1.2rem;
 }
-.about {
+
+.menu--container a.active {
   color: var(--main--text--color) !important;
   border-radius: 8.8px;
   border: 0.88px solid;
   border: linear-gradient(90deg, #32cd32 0%, #ffffff 100%);
   padding: 0.5rem 1rem;
 }
+
 /* Media query for small screens */
 @media (max-width: 600px) {
   .menu {
@@ -158,12 +184,13 @@ export default {
     display: block;
   }
 }
+
 /* Media query for 1280px and larger screens */
 @media (min-width: 1280px) {
   .hamburger--menu {
     display: none; /* Hide hamburger menu on large screens */
   }
-  .logo{
+  .logo {
     width: 100px !important;
     height: 50px;
     padding: 0 !important;

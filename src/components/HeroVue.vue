@@ -1,5 +1,5 @@
 <template>
-  <div class="hero hero--container">
+  <div id="about" class="hero hero--container">
     <div class="hero--section--image">
       <img
         src="../assets/Code_editing_and_software_development_on_laptop.png"
