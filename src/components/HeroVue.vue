@@ -8,7 +8,7 @@
     </div>
     <div class="hero--section--content">
       <h1 class="hero--section--title">Othmane Aoubid</h1>
-      <h3 class="hero--section--description">Full Stack Developper</h3>
+      <h3 class="hero--section--description">Full Stack Developper, Data analytics & Machine learning</h3>
       <p class="hero--section--paragraph">
         <span class="upper--case">A</span>s a passionate data scientist with
         expertise in machine learning, AI, and data analytics, I thrive on the
