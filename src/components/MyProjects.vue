@@ -84,11 +84,12 @@ export default {
           link: "https://predictive.tisalabs.com/",
         },
         {
-          image: require("../assets/cardsIcon.png"),
-          alt: "lightbulb",
-          title: "Predictive Analytics and Forecasting",
-          description: "From data to foresight...",
-          technology: "R, Excel, TensorFlow",
+          image: require("../assets/offzone.png"),
+          alt: "offzone",
+          title: "Offzone Agency",
+          description: "I Created a website for Offzone Agency, a predesigner website, with nextjs and material ui, responsive and user friendly.",
+          technology: "Nextjs, Material UI,",
+          link: "https://offzone.net/",
         },
         {
           image: require("../assets/cardsIcon.png"),
