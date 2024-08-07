@@ -6,14 +6,35 @@
       </h3>
       <div class="projects">
         <div class="project--content">
-          <div class="project--titles">Machine learning</div>
-          <div class="project--titles">Vue JS</div>
-          <div class="project--titles">SQL</div>
+          <div class="project--titles" style="color: #32cd32">
+            <font-awesome-icon
+              :icon="['fab', 'vuejs']"
+              class="fontawesome"
+              style="color: #32cd32"
+            />
+            Vue JS
+          </div>
+          <div class="project--titles" style="color: #32cd32">
+            <font-awesome-icon
+              :icon="['fab', 'python']"
+              class="fontawesome"
+              style="color: #32cd32"
+            />python
+          </div>
         </div>
         <div class="project--content">
-          <div class="project--titles">Next JS</div>
-          <div class="project--titles">Python</div>
-          <div class="project--titles">Firebase</div>
+          <div class="project--titles" style="color: #32cd32">
+            <img  class="img" src="../assets/next-js.svg" alt="next-js">
+            <span>Next JS</span> 
+          </div>
+          <div class="project--titles" style="color: #32cd32">
+            <font-awesome-icon
+              :icon="['fab', 'react']"
+              class="fontawesome"
+            />React
+          </div>
+          <div class="project--titles" style="color: #32cd32">
+            <img class="img" src="../assets/firebase_icon.svg" alt="firebase">Firebase</div>
         </div>
       </div>
       <div class="carousel">
@@ -77,26 +98,29 @@ export default {
         {
           image: require("../assets/predective2.png"),
           alt: "predictive",
-          title: "About Predictive",
+          title: "Predictive",
           description:
             "Predictive is a security and vulnerability scanning platform that identifies and predicts security threats before they happen.",
-          technology: "Python, Firebase, Vuex, Vuejs, Firebase Cloud Function, Apexcharts",
+          technology:
+            "Python, Firebase, Vuex, Vuejs, Firebase Cloud Function, Apexcharts, Chatgpt",
           link: "https://predictive.tisalabs.com/",
         },
         {
           image: require("../assets/offzone.png"),
           alt: "offzone",
           title: "Offzone Agency",
-          description: "I Created a website for Offzone Agency, a predesigner website, with nextjs and material ui, responsive and user friendly.",
+          description:
+            "I Created a website for Offzone Agency, a predesigner website, with nextjs and material ui, responsive and user friendly.",
           technology: "Nextjs, Material UI,",
           link: "https://offzone.net/",
         },
         {
-          image: require("../assets/cardsIcon.png"),
-          alt: "lightbulb",
-          title: "Natural Language Processing",
-          description: "From text to insight...",
-          technology: "Python, NLTK, spaCy",
+          image: require("../assets/trident.png"),
+          alt: "trident",
+          title: "trident",
+          description: "DTIF Trident is an innovation action sanctioned by the government of ireland and given to projects that prove a level of innovation and forward thinking inline with objectives.",
+          technology: "Python, Firebase, Vuex, Vuejs, Firebase Cloud Function, Apexcharts",
+          link: "https://trident.tisalabs.com/auth/login",
         },
       ],
     },
@@ -253,14 +277,24 @@ export default {
   margin-bottom: 1rem;
 }
 .project--titles {
-  background: #484e53;
+  outline: 1px solid#32cd32;
   border-radius: 50px;
   padding: 0.5rem 1rem;
   color: #e1e1e1;
   font-family: Roboto;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 16.41px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img{
+  width: 15px;
+  margin-right: .5rem;
+}
+.fontawesome {
+  margin-right: 0.5rem;
 }
 .carousel {
   position: relative;
