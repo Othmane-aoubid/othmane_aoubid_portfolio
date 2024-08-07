@@ -62,13 +62,13 @@ export default {
           icon: ["fab", "react"],
           title: "Frontend Dev React, NextJS",
           description:
-            "Passionate about UI/UX. 2+ years of development experience in HTML, CSS, JS, MeterialUI, React and NextJS frameworks.",
+            "Experienced in crafting dynamic web applications with React and NextJS, with a keen eye for UI/UX design. Proficient in HTML, CSS, JS, and MaterialUI.",
         },
         {
           icon: ["fab", "vuejs"],
           title: "Frontend Dev VueJS",
           description:
-            "Passionate about UI/UX. 2+ years of development experience in HTML, CSS, JS, VueJS frameworks.",
+            "Skilled in building interactive interfaces using VueJS, with a strong focus on user experience and responsive design. Well-versed in HTML, CSS, and JS.",
         },
         {
           image: require("../assets/firebase_icon.svg"),
