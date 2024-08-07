@@ -34,7 +34,6 @@ export default {
 *::before,
 *::after {
   box-sizing: border-box;
-  color: white;
 }
 /* For Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
@@ -138,7 +137,10 @@ canvas {
   line-height: 30px;
   overflow-x: hidden;
 }
-
+.custom-icon {
+  color: #32cd32 !important;
+  font-size: 24px; /* Adjust the font size as needed */
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -19,7 +19,12 @@
             }"
           >
             <div class="card--image">
-              <img :src="card.image" :alt="card.alt" />
+              <font-awesome-icon
+                v-if="card.icon"
+                :icon="card.icon"
+                class="custom-icon"
+              />
+              <img v-else :src="card.image" :alt="card.alt" />
             </div>
             <div class="card--content">
               <h3 class="card--title">{{ card.title }}</h3>
@@ -48,25 +53,35 @@ export default {
       type: Array,
       default: () => [
         {
-          image: require("../assets/cardsIcon.png"),
-          alt: "lightbulb",
-          title: "Data Analytics & Visualization",
+          icon: ["fas", "desktop"],
+          title: "Software Development",
           description:
-            "From data inception to actionable insights, I design compelling analytics and visualization solutions that illuminate trends, empower decision-making, and drive your business forward.",
+            "Experienced in both functional and OOP: Python, Java, JavaScript, vuejs, next, react",
         },
         {
-          image: require("../assets/cardsIcon.png"),
-          alt: "lightbulb",
-          title: "Predictive Analytics and Forecasting",
+          icon: ["fab", "react"],
+          title: "Frontend Dev React, NextJS",
           description:
-            "From data to foresight, I craft predictive analytics and forecasting solutions that steer your business with precision, empowering strategic decisions and ensuring future success.",
+            "Passionate about UI/UX. 2+ years of development experience in HTML, CSS, JS, MeterialUI, React and NextJS frameworks.",
         },
         {
-          image: require("../assets/cardsIcon.png"),
-          alt: "lightbulb",
-          title: "Natural Language Processing",
+          icon: ["fab", "vuejs"],
+          title: "Frontend Dev VueJS",
           description:
-            "From text to insight, I craft Natural Language Processing solutions that decode language intricacies, revolutionizing data comprehension and empowering your business for success in the digital age.",
+            "Passionate about UI/UX. 2+ years of development experience in HTML, CSS, JS, VueJS frameworks.",
+        },
+        {
+          image: require("../assets/firebase_icon.svg"),
+          alt: "firebase",
+          title: "Firebase",
+          description:
+            "I use Firebase to elevate my projects with its seamless integration and powerful features. I rely on Firebase for secure authentication, reliable hosting, and efficient database management. Its storage solutions also ensure my assets are well-protected and easily accessible. Firebase is more than just a tool—it's an essential partner in my development process, enabling me to build, innovate, and scale with confidence and efficiency.",
+        },
+        {
+          icon: ["fab", "python"],
+          title: "Python",
+          description:
+            "I work extensively with Python to develop APIs, leveraging its powerful libraries and frameworks to create robust and scalable solutions. Additionally, I utilize Python for data analytics, enabling insightful data visualization and decision-making processes. My expertise also extends to AI and machine learning, where I build intelligent models and applications to solve complex problems and drive innovation.",
         },
       ],
     },
@@ -213,7 +228,8 @@ export default {
   color: #e1e1e1;
   width: 243px;
 }
-.card--title, .card--description {
+.card--title,
+.card--description {
   font-family: Roboto;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
