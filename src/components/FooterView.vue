@@ -2,18 +2,21 @@
   <div id="contact" class="footer--container">
     <div class="line"></div>
     <div class="social-icons">
-      <a href="#" class="icon linkedin"><i class="fab fa-linkedin"></i></a>
-      <a href="#" class="icon dribbble"><i class="fab fa-dribbble"></i></a>
-      <a href="#" class="icon facebook"><i class="fab fa-facebook"></i></a>
-      <a href="#" class="icon instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="icon twitter"><i class="fab fa-twitter"></i></a>
+      <a href="javascript:void(0)" @click="openProject('https://www.linkedin.com/in/othmane-aoubid-397417147/')" class="icon linkedin"><i class="fab fa-linkedin"></i></a>
+      <a href="javascript:void(0)" @click="openProject('https://othmaneadportfolio.vercel.app/')" class="icon dribbble"><i class="fab fa-dribbble"></i></a>
     </div>
     <div class="copyright">© 2024 all rights reserved.</div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    openProject(url) {
+      window.open(url, "_blank");
+    },
+  }
+};
 </script>
 
 <style scoped>
@@ -37,13 +40,13 @@ export default {};
 
 .social-icons .icon {
   margin: 0 10px;
-  color: white;
+  color: #32cd32;
   text-decoration: none;
   display: inline-block;
   width: 40px;
   height: 40px;
   line-height: 40px;
-  border: 2px solid white;
+  border: 2px solid #32cd32;
   border-radius: 50%;
   text-align: center;
 }

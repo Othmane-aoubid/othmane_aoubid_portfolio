@@ -24,8 +24,8 @@
         </div>
         <div class="project--content">
           <div class="project--titles" style="color: #32cd32">
-            <img  class="img" src="../assets/next-js.svg" alt="next-js">
-            <span>Next JS</span> 
+            <img class="img" src="../assets/next-js.svg" alt="next-js" />
+            <span>Next JS</span>
           </div>
           <div class="project--titles" style="color: #32cd32">
             <font-awesome-icon
@@ -34,7 +34,12 @@
             />React
           </div>
           <div class="project--titles" style="color: #32cd32">
-            <img class="img" src="../assets/firebase_icon.svg" alt="firebase">Firebase</div>
+            <img
+              class="img"
+              src="../assets/firebase_icon.svg"
+              alt="firebase"
+            />Firebase
+          </div>
         </div>
       </div>
       <div class="carousel">
@@ -118,9 +123,20 @@ export default {
           image: require("../assets/trident.png"),
           alt: "trident",
           title: "trident",
-          description: "DTIF Trident is an innovation action sanctioned by the government of ireland and given to projects that prove a level of innovation and forward thinking inline with objectives.",
-          technology: "Python, Firebase, Vuex, Vuejs, Firebase Cloud Function, Apexcharts",
+          description:
+            "DTIF Trident is an innovation action sanctioned by the government of ireland and given to projects that prove a level of innovation and forward thinking inline with objectives.",
+          technology:
+            "Python, Firebase, Vuex, Vuejs, Firebase Cloud Function, Apexcharts",
           link: "https://trident.tisalabs.com/auth/login",
+        },
+        {
+          image: require("../assets/my_portfolio.png"),
+          alt: "My Portfolio",
+          title: "Portfolio",
+          description:
+            "This portfolio showcases my journey and expertise as a software engineer. It integrates Firebase for seamless data management, Vuex for state management, and Vue.js for creating a dynamic and responsive user interface. this highlights my ability to develop robust and scalable web applications. This project reflects my dedication, precision, and the comprehensive skill set.",
+          technology: "Firebase, Vuex, Vue.js",
+          link: "https://othmaneadportfolio.vercel.app/",
         },
       ],
     },
@@ -289,9 +305,9 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.img{
+.img {
   width: 15px;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 .fontawesome {
   margin-right: 0.5rem;
