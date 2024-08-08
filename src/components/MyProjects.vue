@@ -1,11 +1,25 @@
 <template>
   <div class="what--i--do what--i--do--container">
     <div class="what--i--do--section--content">
-      <h3 class="what--i--do--section--description">
+      <h3
+        class="what--i--do--section--description"
+        ref="description"
+        :class="{
+          'animate-in': descriptionVisible,
+          'animate-out': !descriptionVisible,
+        }"
+      >
         {{ title }} <span class="glowing--effect">{{ subtitle }}</span>
       </h3>
       <div class="projects">
-        <div class="project--content">
+        <div
+          class="project--content"
+          ref="projectContent1"
+          :class="{
+            'animate-in': projectContent1Visible,
+            'animate-out': !projectContent1Visible,
+          }"
+        >
           <div class="project--titles" style="color: #32cd32">
             <font-awesome-icon
               :icon="['fab', 'vuejs']"
@@ -19,10 +33,17 @@
               :icon="['fab', 'python']"
               class="fontawesome"
               style="color: #32cd32"
-            />python
+            />Python
           </div>
         </div>
-        <div class="project--content">
+        <div
+          class="project--content"
+          ref="projectContent2"
+          :class="{
+            'animate-in': projectContent2Visible,
+            'animate-out': !projectContent2Visible,
+          }"
+        >
           <div class="project--titles" style="color: #32cd32">
             <img class="img" src="../assets/next-js.svg" alt="next-js" />
             <span>Next JS</span>
@@ -145,6 +166,9 @@ export default {
     return {
       currentIndex: 0,
       intervalId: null,
+      descriptionVisible: false,
+      projectContent1Visible: false,
+      projectContent2Visible: false,
     };
   },
   computed: {
@@ -156,6 +180,38 @@ export default {
     },
   },
   methods: {
+    setupIntersectionObservers() {
+      const options = {
+        threshold: 0.1,
+      };
+
+      const descriptionObserver = new IntersectionObserver(
+        this.handleVisibilityChange("descriptionVisible"),
+        options
+      );
+      const projectContent1Observer = new IntersectionObserver(
+        this.handleVisibilityChange("projectContent1Visible"),
+        options
+      );
+      const projectContent2Observer = new IntersectionObserver(
+        this.handleVisibilityChange("projectContent2Visible"),
+        options
+      );
+
+      if (this.$refs.description)
+        descriptionObserver.observe(this.$refs.description);
+      if (this.$refs.projectContent1)
+        projectContent1Observer.observe(this.$refs.projectContent1);
+      if (this.$refs.projectContent2)
+        projectContent2Observer.observe(this.$refs.projectContent2);
+    },
+    handleVisibilityChange(visibleProp) {
+      return (entries) => {
+        entries.forEach((entry) => {
+          this[visibleProp] = entry.isIntersecting;
+        });
+      };
+    },
     openProject(url) {
       window.open(url, "_blank");
     },
@@ -174,10 +230,13 @@ export default {
     },
   },
   mounted() {
-    // this.startCarousel();
+    this.$nextTick(() => {
+      this.setupIntersectionObservers();
+    });
+    this.startCarousel();
   },
   unmounted() {
-    // this.stopCarousel();
+    this.stopCarousel();
   },
 };
 </script>
@@ -364,7 +423,54 @@ export default {
 .right-button {
   right: 10px;
 }
+/* Smooth CSS animations for entry and exit */
+.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
 
+.animate-out {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+/* Specific animations for different elements */
+.what--i--do--section--description.animate-in {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0s; /* No delay for the description */
+}
+
+.what--i--do--section--description.animate-out {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.project--content.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0.5s; /* Delay for project content */
+}
+
+.project--content.animate-out {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.project--content:nth-of-type(2).animate-in {
+  transition-delay: 1s; /* Additional delay for the second project content */
+}
+
+.project--content:nth-of-type(2).animate-out {
+  transition-delay: 1s; /* Same delay for the second project content on exit */
+}
+
+/* Adjustments to ensure smooth transitions */
+.project--titles {
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
 @media (min-width: 1280px) {
   .projects {
     display: flex;

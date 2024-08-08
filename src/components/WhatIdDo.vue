@@ -1,7 +1,11 @@
 <template>
   <div class="what--i--do what--i--do--container">
     <div class="what--i--do--section--content">
-      <h3 class="what--i--do--section--description">
+      <h3
+        class="what--i--do--section--description"
+        :class="{ 'animate-in': isVisible, 'animate-out': !isVisible }"
+        ref="description"
+      >
         {{ title }} <span class="glowing--effect">{{ subtitle }}</span>
       </h3>
 
@@ -43,11 +47,11 @@ export default {
   props: {
     title: {
       type: String,
-      default: "What I do",
+      default: "Skills",
     },
     subtitle: {
       type: String,
-      default: "My Services",
+      default: "Technologies I use",
     },
     cards: {
       type: Array,
@@ -83,12 +87,19 @@ export default {
           description:
             "I work extensively with Python to develop APIs, leveraging its powerful libraries and frameworks to create robust and scalable solutions. Additionally, I utilize Python for data analytics, enabling insightful data visualization and decision-making processes. My expertise also extends to AI and machine learning, where I build intelligent models and applications to solve complex problems and drive innovation.",
         },
+        {
+          icon: ["fas", "palette"],
+          title: "UI/UX Design",
+          description:
+            "Passionate about creating visually appealing and user-friendly designs. Skilled in wireframing, and user testing to ensure an optimal user experience across all devices and platforms. Adept at using design tools like Figma to bring ideas to life.",
+        },
       ],
     },
   },
   data() {
     return {
       currentIndex: 0,
+      isVisible: false,
     };
   },
   computed: {
@@ -100,6 +111,23 @@ export default {
     },
   },
   methods: {
+    setupIntersectionObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.isVisible = true;
+          } else {
+            this.isVisible = false;
+          }
+        });
+      }, {
+        threshold: [0.1], // Trigger when at least 10% of the element is visible
+      });
+
+      if (this.$refs.description) {
+        observer.observe(this.$refs.description);
+      }
+    },
     prev() {
       this.currentIndex =
         (this.currentIndex - 1 + this.cards.length) % this.cards.length;
@@ -117,6 +145,7 @@ export default {
   },
   mounted() {
     this.startTimer();
+    this.setupIntersectionObserver();
   },
   beforeUnmount() {
     clearInterval(this.timer);
@@ -237,6 +266,17 @@ export default {
 }
 .card--content {
   transform: translateZ(0);
+}
+.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-out {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 /* Media query for 1280px and larger screens */
 @media (min-width: 1280px) {

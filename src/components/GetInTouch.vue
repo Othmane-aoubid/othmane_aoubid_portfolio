@@ -1,27 +1,80 @@
 <template>
   <div class="get--in-touch--form--container">
-    <h3>
+    <h3
+      ref="heading"
+      :class="{ 'animate-in': headingVisible, 'animate-out': !headingVisible }"
+    >
       Get In Touch <span class="glowing--effect">Let's work together</span>
     </h3>
-    <form class="form" @submit.prevent="validateForm">
+    <form
+      class="form"
+      @submit.prevent="validateForm"
+      ref="form"
+      :class="{ 'animate-in': formVisible, 'animate-out': !formVisible }"
+    >
       <div class="input-group">
-        <input type="text" v-model="form.lastName" placeholder="Last Name" />
-        <input type="text" v-model="form.firstName" placeholder="First Name" />
+        <input
+          type="text"
+          v-model="form.lastName"
+          placeholder="Last Name"
+          ref="lastNameInput"
+          :class="{
+            'animate-in': lastNameInputVisible,
+            'animate-out': !lastNameInputVisible,
+          }"
+        />
+        <input
+          type="text"
+          v-model="form.firstName"
+          placeholder="First Name"
+          ref="firstNameInput"
+          :class="{
+            'animate-in': firstNameInputVisible,
+            'animate-out': !firstNameInputVisible,
+          }"
+        />
       </div>
       <div class="input-group">
-        <input type="email" v-model="form.email" placeholder="Email" />
+        <input
+          type="email"
+          v-model="form.email"
+          placeholder="Email"
+          ref="emailInput"
+          :class="{
+            'animate-in': emailInputVisible,
+            'animate-out': !emailInputVisible,
+          }"
+        />
       </div>
       <div class="input-group">
         <input
           type="tel"
           v-model="form.phoneNumber"
           placeholder="Phone Number"
+          ref="phoneInput"
+          :class="{
+            'animate-in': phoneInputVisible,
+            'animate-out': !phoneInputVisible,
+          }"
         />
       </div>
       <div class="input-group">
-        <textarea v-model="form.message" placeholder="Message"></textarea>
+        <textarea
+          v-model="form.message"
+          placeholder="Message"
+          ref="messageTextarea"
+          :class="{
+            'animate-in': messageTextareaVisible,
+            'animate-out': !messageTextareaVisible,
+          }"
+        ></textarea>
       </div>
-      <button type="submit">Send</button>
+      <button
+        type="submit"
+        :class="{ 'animate-in': buttonVisible, 'animate-out': !buttonVisible }"
+      >
+        Send
+      </button>
     </form>
   </div>
 </template>
@@ -31,7 +84,6 @@ import emailjs from "emailjs-com";
 import { useToast } from "vue-toastification";
 import { collection, getDocs } from "firebase/firestore";
 import db from "../firebase/index";
-
 
 export default {
   data() {
@@ -44,6 +96,14 @@ export default {
         message: "",
       },
       emailJsConfig: {}, // Change to an object
+      headingVisible: false,
+      formVisible: false,
+      lastNameInputVisible: false,
+      firstNameInputVisible: false,
+      emailInputVisible: false,
+      phoneInputVisible: false,
+      messageTextareaVisible: false,
+      buttonVisible: false,
     };
   },
   setup() {
@@ -52,7 +112,44 @@ export default {
       toast,
     };
   },
+  mounted() {
+    this.$nextTick(() => {
+      this.setupIntersectionObservers();
+    });
+  },
   methods: {
+    setupIntersectionObservers() {
+      const options = {
+        threshold: 0.1,
+      };
+
+      const observers = [
+        { ref: 'heading', prop: 'headingVisible' },
+        { ref: 'form', prop: 'formVisible' },
+        { ref: 'lastNameInput', prop: 'lastNameInputVisible' },
+        { ref: 'firstNameInput', prop: 'firstNameInputVisible' },
+        { ref: 'emailInput', prop: 'emailInputVisible' },
+        { ref: 'phoneInput', prop: 'phoneInputVisible' },
+        { ref: 'messageTextarea', prop: 'messageTextareaVisible' },
+        { ref: null, prop: 'buttonVisible' }, // Special case for button
+      ];
+
+      observers.forEach(({ ref, prop }) => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            this[prop] = entry.isIntersecting;
+          });
+        }, options);
+
+        if (ref) {
+          const element = this.$refs[ref];
+          if (element) observer.observe(element);
+        } else {
+          // Handle button visibility separately
+          this.buttonVisible = true;
+        }
+      });
+    },
     validateForm() {
       if (
         !this.form.lastName ||
@@ -77,7 +174,6 @@ export default {
       return re.test(email);
     },
     async sendEmail() {
-
       const collectionRef = collection(db, "emailJsConfigue");
       const querySnapshot = await getDocs(collectionRef);
       try {
@@ -88,7 +184,7 @@ export default {
             const serviceID = this.emailJsConfig.serviceID; // Use the value from emailJsConfig
             const templateID = this.emailJsConfig.templateID; // Use the value from emailJsConfig
             const userID = this.emailJsConfig.userID; // Use the value from emailJsConfig
-            
+
             const templateParams = {
               lastName: this.form.lastName,
               firstName: this.form.firstName,
@@ -96,7 +192,7 @@ export default {
               phoneNumber: this.form.phoneNumber,
               message: this.form.message,
             };
-      
+
             emailjs
               .send(serviceID, templateID, templateParams, userID)
               .then(() => {
@@ -104,7 +200,10 @@ export default {
                 this.resetForm();
               })
               .catch(() => {
-                this.showToast("There was an error sending your email.", "error");
+                this.showToast(
+                  "There was an error sending your email.",
+                  "error"
+                );
               });
           });
         } else {
@@ -223,7 +322,65 @@ button:hover {
   color: green;
   text-align: center;
 }
+/* Smooth CSS animations for entry and exit */
+.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
 
+.animate-out {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+/* Specific animations for different elements */
+h3.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s; /* No delay for the heading */
+}
+
+h3.animate-out {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.form.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s; /* Delay for the form */
+}
+
+.form.animate-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.input-group input.animate-in,
+.input-group textarea.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.input-group input.animate-out,
+.input-group textarea.animate-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+button.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1s; /* Additional delay for the button */
+}
+
+button.animate-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
 @media (min-width: 1280px) {
   .form {
     width: 80%;

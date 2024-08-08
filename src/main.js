@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import Toast, { POSITION } from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
-
+import { MotionPlugin } from '@vueuse/motion'
 
 // Add the icons to the library
 library.add(fas);
@@ -19,4 +19,4 @@ createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(Toast, {
     position: POSITION.TOP_RIGHT,
     timeout: 5000,
     closeButton: true,
-  }).mount('#app')
+  }).use(MotionPlugin).mount('#app')
