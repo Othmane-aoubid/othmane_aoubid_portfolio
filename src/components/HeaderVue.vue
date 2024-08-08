@@ -116,25 +116,26 @@ export default {
 
 .menu {
   position: absolute;
-  top: 50px;
+  top: 0;
   right: -100%;
-  width: 250px;
-  height: 100px;
-  background-color: #000000;
-  transition: right 0.3s ease;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
   box-sizing: border-box;
-  display: none;
-  transition: all 0.3s ease;
+  transform: translateY(-100%);
+  transition: transform 0.6s ease, right 0.6s ease;
 }
 
 .menu.active {
   right: 0;
   display: inline-block;
+  transform: translateY(0);
   z-index: 9999 !important;
 }
 
@@ -156,23 +157,58 @@ export default {
 }
 
 .menu--container li {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.menu--container li:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.menu--container li:nth-child(2) {
+  animation-delay: 0.4s;
 }
 
 .menu--container a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  padding: 0.5rem 2rem;
+  border-radius: 50px;
+  transition: background-color 0.4s ease;
+}
+
+.menu--container a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .menu--container a.active {
-  color: var(--main--text--color) !important;
-  border-radius: 8.8px;
-  border: 0.88px solid;
-  border: linear-gradient(90deg, #32cd32 0%, #ffffff 100%);
-  padding: 0.5rem 1rem;
+  background-color: #32cd32;
 }
-
+.logo--container {
+  animation: fadeInLogo 1s ease forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInLogo {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 /* Media query for small screens */
 @media (max-width: 600px) {
   .menu {
@@ -212,6 +248,7 @@ export default {
     right: auto; /* Remove right positioning */
     background-color: transparent; /* Adjust background color */
     flex-direction: row; /* Arrange items horizontally */
+    transform: translateY(0%);
   }
   .menu--container ul {
     flex-direction: row; /* Arrange menu items horizontally */
