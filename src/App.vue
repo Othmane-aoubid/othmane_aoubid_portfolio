@@ -6,16 +6,24 @@
     <MyProjects />
     <GetInTouchVue />
     <FooterView />
+    <!-- Scroll to Top Button -->
+    <button
+      v-if="showScrollTopButton"
+      @click="scrollToTop"
+      class="scroll-to-top"
+    >
+    <font-awesome-icon icon="arrow-up" />
+    </button>
   </div>
 </template>
 
 <script>
-import HeaderVue from './components/HeaderVue.vue';
-import HeroVueVue from './components/HeroVue.vue';
-import WhatIdDoVue from './components/WhatIdDo.vue';
-import MyProjects from './components/MyProjects.vue'; 
-import GetInTouchVue from './components/GetInTouch.vue';
-import FooterView from './components/FooterView.vue';
+import HeaderVue from "./components/HeaderVue.vue";
+import HeroVueVue from "./components/HeroVue.vue";
+import WhatIdDoVue from "./components/WhatIdDo.vue";
+import MyProjects from "./components/MyProjects.vue";
+import GetInTouchVue from "./components/GetInTouch.vue";
+import FooterView from "./components/FooterView.vue";
 export default {
   name: "App",
   components: {
@@ -24,92 +32,111 @@ export default {
     WhatIdDoVue,
     MyProjects,
     GetInTouchVue,
-    FooterView
+    FooterView,
+  },
+  data() {
+    return {
+      showScrollTopButton: false,
+    };
+  },
+  methods: {
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
+    handleScroll() {
+      this.showScrollTopButton = window.scrollY > window.innerHeight;
+    },
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
 };
 </script>
 
 <style>
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-Italic.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-BoldItalic.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-BoldItalic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-Light.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-LightItalic.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-LightItalic.ttf") format("truetype");
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-MediumItalic.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-MediumItalic.ttf") format("truetype");
   font-weight: 500;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-Black.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-Black.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-BlackItalic.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-BlackItalic.ttf") format("truetype");
   font-weight: 900;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-Thin.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-Thin.ttf") format("truetype");
   font-weight: 100;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('@/fonts/Roboto/Roboto-ThinItalic.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("@/fonts/Roboto/Roboto-ThinItalic.ttf") format("truetype");
   font-weight: 100;
   font-style: italic;
 }
@@ -129,7 +156,7 @@ export default {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #32CD32 !important; /* Color of the scrollbar thumb */
+  background-color: #32cd32 !important; /* Color of the scrollbar thumb */
   border-radius: 10px !important; /* Rounded corners for the scrollbar thumb */
   border: 3px solid #f1f1f1 !important; /* Optional: Adds space around the thumb */
 }
@@ -137,13 +164,13 @@ export default {
 /* For Firefox */
 * {
   scrollbar-width: thin !important; /* Sets the width of the vertical scrollbar */
-  scrollbar-color: #32CD32 #f1f1f1 !important; /* Color of the scrollbar thumb and track */
+  scrollbar-color: #32cd32 #f1f1f1 !important; /* Color of the scrollbar thumb and track */
 }
 
 body {
   margin: unset;
   overflow-x: hidden !important;
-  overflow-y:scroll;
+  overflow-y: scroll;
 }
 /* For Chrome, Edge, and Safari */
 body::-webkit-scrollbar {
@@ -155,15 +182,15 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #32CD32 !important; /* Color of the scrollbar thumb */
+  background-color: #32cd32 !important; /* Color of the scrollbar thumb */
   border-radius: 10px !important; /* Rounded corners for the scrollbar thumb */
   border: 3px solid #f1f1f1 !important; /* Optional: Adds space around the thumb */
 }
 
-a{
+a {
   text-decoration: none;
 }
-li{
+li {
   list-style: none;
 }
 button,
@@ -188,15 +215,19 @@ canvas {
   padding: 0;
   margin: 0;
 
-  --main--text--color: #32CD32;
-  --icons--bg--color: #32CD32;
-  --text--light--color: #A9A9A9;
+  --main--text--color: #32cd32;
+  --icons--bg--color: #32cd32;
+  --text--light--color: #a9a9a9;
   --text--background--gradiant: linear-gradient(
     90.54deg,
     #32cd32 0.46%,
     #ffffff 91.25%
   );
-  --cards--background--gradiant: linear-gradient(121.9deg, rgba(28, 28, 28, 0.5) 0%, #050505 96.81%);
+  --cards--background--gradiant: linear-gradient(
+    121.9deg,
+    rgba(28, 28, 28, 0.5) 0%,
+    #050505 96.81%
+  );
   --width--main--btn: Fixed (164px) px;
   --height--main--btn: Fixed (41px) px;
   --padding--main--btn: 10px 0px 0px 0px;
@@ -205,14 +236,14 @@ canvas {
   --border--main--btn: 1px 0px 0px 0px;
   --opacity--main--btn: 0px;
 
-  --width--secondary--btn: Fixed (86px)px;
-  --height--secondary--btn: Fixed (39px)px;
+  --width--secondary--btn: Fixed (86px) px;
+  --height--secondary--btn: Fixed (39px) px;
   --padding--secondary--btn: 10px 0px 0px 0px;
   --gap--secondary--btn: 10px;
   --border-radius--secondary--btn: 50px 0px 0px 0px;
   --border--secondary--btn: 1px 0px 0px 0px;
   --opacity--secondary--btn: 0px;
-  --background--secondary--btn: #484E53;
+  --background--secondary--btn: #484e53;
 
   font-family: Roboto;
   font-size: 14px;
@@ -223,6 +254,46 @@ canvas {
 .custom-icon {
   color: #32cd32 !important;
   font-size: 24px; /* Adjust the font size as needed */
+}
+.scroll-to-top {
+  position: fixed;
+  bottom: 20% !important;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #32cd32;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(100px);
+}
+
+.scroll-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-to-top i {
+  margin: 0;
+}
+
+/* Animation for the button */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   *,
