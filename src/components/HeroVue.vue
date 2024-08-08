@@ -7,29 +7,37 @@
       />
     </div>
     <div class="hero--section--content">
-      <h1 class="hero--section--title" style="margin-bottom: 0 ;">Othmane Aoubid</h1>
-      <h3 class="hero--section--description" style="margin-top: 0 ;">Full Stack Developper, Data analytics & Machine learning</h3>
+      <h1 class="hero--section--title" style="margin-bottom: 0">
+        Othmane Aoubid
+      </h1>
+      <h3 class="hero--section--description" style="margin-top: 0">
+        Full Stack Developper, Data analytics
+      </h3>
       <p class="hero--section--paragraph">
-        <span class="upper--case">A</span>s a passionate data scientist with
-        expertise in machine learning, AI, and data analytics, I thrive on the
-        challenges of exploring complex data landscapes and uncovering
-        meaningful patterns that drive innovation. Additionally, as a software
-        engineer with over two years of hands-on experience, I am dedicated to
-        creating innovative and efficient solutions that enhance user
-        experiences and drive progress. My journey in the tech industry has
-        equipped me with a robust skill set in software development,
-        problem-solving, and collaboration. I excel in leveraging cutting-edge
-        technologies to deliver high-quality, scalable applications that meet
-        diverse client needs. Committed to continuous learning and professional
-        growth, I flourish in dynamic environments where I can apply my
-        expertise to tackle challenging projects and contribute to meaningful
-        advancements in the field.
+        <span class="upper--case">I</span> am a full-stack developer with
+        expertise in creating efficient, user-focused solutions. While my
+        primary focus is on full-stack development, I also have experience in
+        data analytics, which has enhanced my ability to work with complex data.
+        With over two years of experience in software engineering, I specialize
+        in leveraging advanced technologies to deliver scalable, high-quality
+        applications tailored to diverse client needs. Committed to continuous
+        learning, I excel in dynamic environments where I can apply my skills to
+        tackle challenging projects and contribute to meaningful advancements in
+        the field.
       </p>
       <div class="hero--section--btn--container">
-        <button class="contact--me" style="color: white !important;" @click.prevent="scrollToSection('contact')">
+        <button
+          class="contact--me"
+          style="color: white !important"
+          @click.prevent="scrollToSection('contact')"
+        >
           Contact Me
         </button>
-        <button class="download--resume" style="color: white !important;" @click="downloadResume">
+        <button
+          class="download--resume"
+          style="color: white !important"
+          @click="downloadResume"
+        >
           Download Resume
         </button>
       </div>
