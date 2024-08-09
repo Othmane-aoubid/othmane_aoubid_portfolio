@@ -11,7 +11,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import Toast, { POSITION } from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
 import { MotionPlugin } from '@vueuse/motion'
-
+import { inject } from '@vercel/analytics';
+ 
+inject();
 // Add the icons to the library
 library.add(fas);
 
