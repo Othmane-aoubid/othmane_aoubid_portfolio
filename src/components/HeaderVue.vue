@@ -185,6 +185,7 @@ export default {
 
 .menu--container a.active {
   background-color: #32cd32;
+  color: white;
 }
 .logo--container {
   animation: fadeInLogo 1s ease forwards;
